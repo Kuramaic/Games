@@ -8,7 +8,6 @@ move = 1
 sit = 1
 stels = False
 flag = False
-
 jump = False
 
 sc = pygame.display.set_mode((W, H))
@@ -132,7 +131,7 @@ ground_rect.bottom = sc_rect.bottom
 
 hero_rect.bottom = ground_rect.top
 
-FPS = 60
+FPS = 360
 clock = pygame.time.Clock()
 
 def fly():
