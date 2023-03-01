@@ -131,7 +131,7 @@ ground_rect.bottom = sc_rect.bottom
 
 hero_rect.bottom = ground_rect.top
 
-FPS = 360
+FPS = 60
 clock = pygame.time.Clock()
 
 def fly():
