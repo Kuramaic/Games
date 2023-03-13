@@ -39,7 +39,7 @@ wall5=Wall(2700,250,'wall.png',4,4)
 wall6=Wall(3100,200,'wall.png',4,4)
 
 ground = pygame.image.load('ground.png')
-ground = pygame.transform.scale(ground, (ground.get_rect().width * 40, ground.get_rect().height // 2))
+ground = pygame.transform.scale(ground, (ground.get_rect().width * 39, ground.get_rect().height // 2))
 ground_rect = ground.get_rect()
 
 town = pygame.image.load('town.png')
