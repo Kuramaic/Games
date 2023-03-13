@@ -14,7 +14,8 @@ fall = 0
 soft = True
 
 jump = False
-
+jump_force=30
+move_jump=jump_force
 sc = pygame.display.set_mode((W, H))
 sc_rect = sc.get_rect()
 pygame.display.set_caption("0_0")
@@ -87,7 +88,7 @@ platform01 = pygame.image.load('platform1.png')
 platform01 = pygame.transform.scale(platform01, (platform01.get_rect().width * 5, platform01.get_rect().height * 3.5))
 platform01_rect = platform01.get_rect()
 platform01_rect.x = 1400
-platform01_rect.y = 550
+platform01_rect.y = 550   
 
 platform02 = pygame.image.load('platform1.png')
 platform02 = pygame.transform.scale(platform02, (platform02.get_rect().width * 5, platform02.get_rect().height * 3.5))
@@ -156,79 +157,130 @@ hero_rect.bottom = ground_rect.top
 FPS = 60
 clock = pygame.time.Clock()
 
-def fly(long):
-    hero_rect.y -= long
-    if 0 < hero_rect.right < W:
-        if move == 1:
-            wall1.rect.x += 5
-            wall2.rect.x += 5
-            wall3.rect.x += 5
-            wall4.rect.x += 5
-            wall5.rect.x += 5
-            wall6.rect.x += 5
-            ground_rect.x += 5
-            platform_rect.x += 5
-            platform00_rect.x += 5
-            platform01_rect.x += 5
-            platform02_rect.x += 5
-            platform03_rect.x += 5
-            platform04_rect.x += 5
-            platform05_rect.x += 5
-            platform06_rect.x += 5
-            platform07_rect.x += 5
-            platform08_rect.x += 5
-            platform09_rect.x += 5
-            #house_rect.x += 5
-        if move == 2:
-            wall1.rect.x -= 5
-            wall2.rect.x -= 5
-            wall3.rect.x -= 5
-            wall4.rect.x -= 5
-            wall5.rect.x -= 5
-            wall6.rect.x -= 5
-            ground_rect.x -= 5
-            platform_rect.x -= 5
-            platform00_rect.x -= 5
-            platform01_rect.x -= 5
-            platform02_rect.x -= 5
-            platform03_rect.x -= 5
-            platform04_rect.x -= 5
-            platform05_rect.x -= 5
-            platform06_rect.x -= 5
-            platform07_rect.x -= 5
-            platform08_rect.x -= 5
-            platform09_rect.x -= 5
-            #house_rect.x -= 5
+# def fly(long):
+#     hero_rect.y -= long
+#     if 0 < hero_rect.right < W:
+#         if move == 1:
+#             wall1.rect.x += 5
+#             wall2.rect.x += 5
+#             wall3.rect.x += 5
+#             wall4.rect.x += 5
+#             wall5.rect.x += 5
+#             wall6.rect.x += 5
+#             ground_rect.x += 5
+#             platform_rect.x += 5
+#             platform00_rect.x += 5
+#             platform01_rect.x += 5
+#             platform02_rect.x += 5
+#             platform03_rect.x += 5
+#             platform04_rect.x += 5
+#             platform05_rect.x += 5
+#             platform06_rect.x += 5
+#             platform07_rect.x += 5
+#             platform08_rect.x += 5
+#             platform09_rect.x += 5
+#             #house_rect.x += 5
+#         if move == 2:
+#             wall1.rect.x -= 5
+#             wall2.rect.x -= 5
+#             wall3.rect.x -= 5
+#             wall4.rect.x -= 5
+#             wall5.rect.x -= 5
+#             wall6.rect.x -= 5
+#             ground_rect.x -= 5
+#             platform_rect.x -= 5
+#             platform00_rect.x -= 5
+#             platform01_rect.x -= 5
+#             platform02_rect.x -= 5
+#             platform03_rect.x -= 5
+#             platform04_rect.x -= 5
+#             platform05_rect.x -= 5
+#             platform06_rect.x -= 5
+#             platform07_rect.x -= 5
+#             platform08_rect.x -= 5
+#             platform09_rect.x -= 5
+#             #house_rect.x -= 5
 
-    sc.blit(town, town_rect)
-    sc.blit(wall1.image, wall1.rect)
-    sc.blit(wall2.image, wall2.rect)
-    sc.blit(wall3.image, wall3.rect)
-    sc.blit(wall4.image, wall4.rect)
-    sc.blit(wall5.image, wall5.rect)
-    sc.blit(wall6.image, wall6.rect)
-    sc.blit(platform, platform_rect)
-    sc.blit(platform00, platform00_rect)
-    sc.blit(platform01, platform01_rect)
-    sc.blit(platform02, platform02_rect)
-    sc.blit(platform03, platform03_rect)
-    sc.blit(platform04, platform04_rect)
-    sc.blit(platform05, platform05_rect)
-    sc.blit(platform06, platform06_rect)
-    sc.blit(platform07, platform07_rect)
-    sc.blit(platform08, platform08_rect)
-    sc.blit(platform09, platform09_rect)
-    #sc.blit(house, house_rect)
-    sc.blit(hero, hero_rect)
-    sc.blit(ground, ground_rect)
-    clock.tick(FPS)
-    pygame.display.update()
+#     sc.blit(town, town_rect)
+#     sc.blit(wall1.image, wall1.rect)
+#     sc.blit(wall2.image, wall2.rect)
+#     sc.blit(wall3.image, wall3.rect)
+#     sc.blit(wall4.image, wall4.rect)
+#     sc.blit(wall5.image, wall5.rect)
+#     sc.blit(wall6.image, wall6.rect)
+#     sc.blit(platform, platform_rect)
+#     sc.blit(platform00, platform00_rect)
+#     sc.blit(platform01, platform01_rect)
+#     sc.blit(platform02, platform02_rect)
+#     sc.blit(platform03, platform03_rect)
+#     sc.blit(platform04, platform04_rect)
+#     sc.blit(platform05, platform05_rect)
+#     sc.blit(platform06, platform06_rect)
+#     sc.blit(platform07, platform07_rect)
+#     sc.blit(platform08, platform08_rect)
+#     sc.blit(platform09, platform09_rect)
+#     #sc.blit(house, house_rect)
+#     sc.blit(hero, hero_rect)
+#     sc.blit(ground, ground_rect)
+#     clock.tick(FPS)
+#     pygame.display.update()
 
 while 1:
+    keys = pygame.key.get_pressed()
+
+    if hero_rect.top > 0 and hero_rect.bottom == ground_rect.top:
+            jump = True
+    elif wall1.rect.x + 200 > hero_rect.x > wall1.rect.x - 93 and hero_rect.bottom == wall1.rect.top:
+            jump = True
+    elif wall2.rect.x + 200 > hero_rect.x > wall2.rect.x - 93 and hero_rect.bottom == wall2.rect.top:
+            jump = True
+    elif wall3.rect.x + 200 > hero_rect.x > wall3.rect.x - 93 and hero_rect.bottom == wall3.rect.top:
+            jump = True
+    elif wall4.rect.x + 200 > hero_rect.x > wall4.rect.x - 93 and hero_rect.bottom == wall4.rect.top:
+            jump = True
+    elif wall5.rect.x + 200 > hero_rect.x > wall5.rect.x - 93 and hero_rect.bottom == wall5.rect.top:
+            jump = True
+    elif wall6.rect.x + 200 > hero_rect.x > wall6.rect.x - 93 and hero_rect.bottom == wall6.rect.top:
+            jump = True
+    elif hero_rect.bottom == platform_rect.top and platform_rect.x + 500 > hero_rect.x > platform_rect.x - 93:
+            jump = True
+    elif hero_rect.bottom == platform00_rect.top and platform00_rect.x + 80 > hero_rect.x > platform00_rect.x - 93:
+            jump = True
+    elif hero_rect.bottom == platform01_rect.top and platform01_rect.x + 80 > hero_rect.x > platform01_rect.x - 93:
+            jump = True
+    elif hero_rect.bottom == platform02_rect.top and platform02_rect.x + 80 > hero_rect.x > platform02_rect.x - 93:
+            jump = True
+    elif hero_rect.bottom == platform03_rect.top and platform03_rect.x + 80 > hero_rect.x > platform03_rect.x - 93:
+            jump = True
+    elif hero_rect.bottom == platform04_rect.top and platform04_rect.x + 80 > hero_rect.x > platform04_rect.x - 93:
+            jump = True
+    elif hero_rect.bottom == platform05_rect.top and platform05_rect.x + 80 > hero_rect.x > platform05_rect.x - 93:
+            jump = True
+    elif hero_rect.bottom == platform06_rect.top and platform06_rect.x + 80 > hero_rect.x > platform06_rect.x - 93:
+            jump = True
+    elif hero_rect.bottom == platform07_rect.top and platform07_rect.x + 80 > hero_rect.x > platform07_rect.x - 93:
+            jump = True
+    elif hero_rect.bottom == platform08_rect.top and platform08_rect.x + 80 > hero_rect.x > platform08_rect.x - 93:
+            jump = True
+    elif hero_rect.bottom == platform09_rect.top and platform09_rect.x + 80 > hero_rect.x > platform09_rect.x - 93:
+            jump = True
+
+       
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             exit()
-    keys = pygame.key.get_pressed()
+        elif event.type == pygame.KEYDOWN:
+            if event.key == pygame.K_SPACE and jump:
+                move_jump =- jump_force
+
+    if move_jump <= jump_force:
+        if hero_rect.bottom + move_jump < ground_rect.top:
+            hero_rect.bottom += move_jump
+            if move_jump < jump_force:
+                move_jump += 1
+        else:
+            hero_rect.bottom = ground_rect.top
+            move_jump = jump_force + 1        
 
         # gravitazija
     if hero_rect.bottom < ground_rect.top:
@@ -244,7 +296,7 @@ while 1:
         elif wall4.rect.top + 9 > hero_rect.bottom >= wall4.rect.top and wall4.rect.x + 164 > hero_rect.x > wall4.rect.x - 52:
             hero_rect.bottom = wall4.rect.top
             fall = 0
-        elif wall5.rect.top + 9 > hero_rect.bottom >= wall5.rect.top and wall5.rect.x + 164 > hero_rect.x > wall5.rect.x - 52:
+        elif    wall5.rect.top + 9 > hero_rect.bottom >= wall5.rect.top and wall5.rect.x + 164 > hero_rect.x > wall5.rect.x - 52:
             hero_rect.bottom = wall5.rect.top
             fall = 0
         elif wall6.rect.top + 9 > hero_rect.bottom >= wall6.rect.top and wall6.rect.x + 164 > hero_rect.x > wall6.rect.x - 52:
@@ -445,87 +497,87 @@ while 1:
             stels = False
             move = 0
         
-    if keys[32]:
-        if hero_rect.top > 0 and hero_rect.bottom == ground_rect.top:
-            jump = True
-        elif wall1.rect.x + 200 > hero_rect.x > wall1.rect.x - 93 and hero_rect.bottom == wall1.rect.top:
-            jump = True
-        elif wall2.rect.x + 200 > hero_rect.x > wall2.rect.x - 93 and hero_rect.bottom == wall2.rect.top:
-            jump = True
-        elif wall3.rect.x + 200 > hero_rect.x > wall3.rect.x - 93 and hero_rect.bottom == wall3.rect.top:
-            jump = True
-        elif wall4.rect.x + 200 > hero_rect.x > wall4.rect.x - 93 and hero_rect.bottom == wall4.rect.top:
-            jump = True
-        elif wall5.rect.x + 200 > hero_rect.x > wall5.rect.x - 93 and hero_rect.bottom == wall5.rect.top:
-            jump = True
-        elif wall6.rect.x + 200 > hero_rect.x > wall6.rect.x - 93 and hero_rect.bottom == wall6.rect.top:
-            jump = True
-        elif hero_rect.bottom == platform_rect.top and platform_rect.x + 500 > hero_rect.x > platform_rect.x - 93:
-            jump = True
-        elif hero_rect.bottom == platform00_rect.top and platform00_rect.x + 80 > hero_rect.x > platform00_rect.x - 93:
-            jump = True
-        elif hero_rect.bottom == platform01_rect.top and platform01_rect.x + 80 > hero_rect.x > platform01_rect.x - 93:
-            jump = True
-        elif hero_rect.bottom == platform02_rect.top and platform02_rect.x + 80 > hero_rect.x > platform02_rect.x - 93:
-            jump = True
-        elif hero_rect.bottom == platform03_rect.top and platform03_rect.x + 80 > hero_rect.x > platform03_rect.x - 93:
-            jump = True
-        elif hero_rect.bottom == platform04_rect.top and platform04_rect.x + 80 > hero_rect.x > platform04_rect.x - 93:
-            jump = True
-        elif hero_rect.bottom == platform05_rect.top and platform05_rect.x + 80 > hero_rect.x > platform05_rect.x - 93:
-            jump = True
-        elif hero_rect.bottom == platform06_rect.top and platform06_rect.x + 80 > hero_rect.x > platform06_rect.x - 93:
-            jump = True
-        elif hero_rect.bottom == platform07_rect.top and platform07_rect.x + 80 > hero_rect.x > platform07_rect.x - 93:
-            jump = True
-        elif hero_rect.bottom == platform08_rect.top and platform08_rect.x + 80 > hero_rect.x > platform08_rect.x - 93:
-            jump = True
-        elif hero_rect.bottom == platform09_rect.top and platform09_rect.x + 80 > hero_rect.x > platform09_rect.x - 93:
-            jump = True
-        if jump:
-            jump = False
-            for _ in range(27):
-                fly(12)
-                if hero_rect.top == wall1.rect.bottom and wall1.rect.x + 200 > hero_rect.x > wall1.rect.x - 93:
-                    break
-                elif hero_rect.top == wall2.rect.bottom and wall2.rect.x + 200 > hero_rect.x > wall2.rect.x - 93:
-                    break
-                elif hero_rect.top == wall3.rect.bottom and wall3.rect.x + 200 > hero_rect.x > wall3.rect.x - 93:
-                    break
-                elif hero_rect.top == wall4.rect.bottom and wall4.rect.x + 250 > hero_rect.x > wall4.rect.x - 93:
-                    break
-                elif hero_rect.top == wall5.rect.bottom and wall5.rect.x + 200 > hero_rect.x > wall5.rect.x - 93:
-                    break
-                elif hero_rect.top == wall6.rect.bottom and wall6.rect.x + 200 > hero_rect.x > wall6.rect.x - 93:
-                    break
+    # if keys[32]:
+    #     if hero_rect.top > 0 and hero_rect.bottom == ground_rect.top:
+    #         jump = True
+    #     elif wall1.rect.x + 200 > hero_rect.x > wall1.rect.x - 93 and hero_rect.bottom == wall1.rect.top:
+    #         jump = True
+    #     elif wall2.rect.x + 200 > hero_rect.x > wall2.rect.x - 93 and hero_rect.bottom == wall2.rect.top:
+    #         jump = True
+    #     elif wall3.rect.x + 200 > hero_rect.x > wall3.rect.x - 93 and hero_rect.bottom == wall3.rect.top:
+    #         jump = True
+    #     elif wall4.rect.x + 200 > hero_rect.x > wall4.rect.x - 93 and hero_rect.bottom == wall4.rect.top:
+    #         jump = True
+    #     elif wall5.rect.x + 200 > hero_rect.x > wall5.rect.x - 93 and hero_rect.bottom == wall5.rect.top:
+    #         jump = True
+    #     elif wall6.rect.x + 200 > hero_rect.x > wall6.rect.x - 93 and hero_rect.bottom == wall6.rect.top:
+    #         jump = True
+    #     elif hero_rect.bottom == platform_rect.top and platform_rect.x + 500 > hero_rect.x > platform_rect.x - 93:
+    #         jump = True
+    #     elif hero_rect.bottom == platform00_rect.top and platform00_rect.x + 80 > hero_rect.x > platform00_rect.x - 93:
+    #         jump = True
+    #     elif hero_rect.bottom == platform01_rect.top and platform01_rect.x + 80 > hero_rect.x > platform01_rect.x - 93:
+    #         jump = True
+    #     elif hero_rect.bottom == platform02_rect.top and platform02_rect.x + 80 > hero_rect.x > platform02_rect.x - 93:
+    #         jump = True
+    #     elif hero_rect.bottom == platform03_rect.top and platform03_rect.x + 80 > hero_rect.x > platform03_rect.x - 93:
+    #         jump = True
+    #     elif hero_rect.bottom == platform04_rect.top and platform04_rect.x + 80 > hero_rect.x > platform04_rect.x - 93:
+    #         jump = True
+    #     elif hero_rect.bottom == platform05_rect.top and platform05_rect.x + 80 > hero_rect.x > platform05_rect.x - 93:
+    #         jump = True
+    #     elif hero_rect.bottom == platform06_rect.top and platform06_rect.x + 80 > hero_rect.x > platform06_rect.x - 93:
+    #         jump = True
+    #     elif hero_rect.bottom == platform07_rect.top and platform07_rect.x + 80 > hero_rect.x > platform07_rect.x - 93:
+    #         jump = True
+    #     elif hero_rect.bottom == platform08_rect.top and platform08_rect.x + 80 > hero_rect.x > platform08_rect.x - 93:
+    #         jump = True
+    #     elif hero_rect.bottom == platform09_rect.top and platform09_rect.x + 80 > hero_rect.x > platform09_rect.x - 93:
+    #         jump = True
+    #     if jump:
+    #         jump = False
+    #         for _ in range(27):
+    #             fly(12)
+    #             if hero_rect.top == wall1.rect.bottom and wall1.rect.x + 200 > hero_rect.x > wall1.rect.x - 93:
+    #                 break
+    #             elif hero_rect.top == wall2.rect.bottom and wall2.rect.x + 200 > hero_rect.x > wall2.rect.x - 93:
+    #                 break
+    #             elif hero_rect.top == wall3.rect.bottom and wall3.rect.x + 200 > hero_rect.x > wall3.rect.x - 93:
+    #                 break
+    #             elif hero_rect.top == wall4.rect.bottom and wall4.rect.x + 250 > hero_rect.x > wall4.rect.x - 93:
+    #                 break
+    #             elif hero_rect.top == wall5.rect.bottom and wall5.rect.x + 200 > hero_rect.x > wall5.rect.x - 93:
+    #                 break
+    #             elif hero_rect.top == wall6.rect.bottom and wall6.rect.x + 200 > hero_rect.x > wall6.rect.x - 93:
+    #                 break
 
-                if hero_rect.right > wall1.rect.left and hero_rect.colliderect(wall1.rect) is True and hero_rect.x < wall1.rect.x:
-                    break
-                elif hero_rect.right > wall2.rect.left and hero_rect.colliderect(wall2.rect) is True and hero_rect.x < wall2.rect.x:
-                    break
-                elif hero_rect.right > wall3.rect.left and hero_rect.colliderect(wall3.rect) is True and hero_rect.x < wall3.rect.x:
-                    break
-                elif hero_rect.right > wall4.rect.left and hero_rect.colliderect(wall4.rect) is True and hero_rect.x < wall4.rect.x:
-                    break
-                elif hero_rect.right > wall5.rect.left and hero_rect.colliderect(wall5.rect) is True and hero_rect.x < wall5.rect.x:
-                    break
-                elif hero_rect.right > wall6.rect.left and hero_rect.colliderect(wall6.rect) is True and hero_rect.x < wall6.rect.x:
-                    break
+    #             if hero_rect.right > wall1.rect.left and hero_rect.colliderect(wall1.rect) is True and hero_rect.x < wall1.rect.x:
+    #                 break
+    #             elif hero_rect.right > wall2.rect.left and hero_rect.colliderect(wall2.rect) is True and hero_rect.x < wall2.rect.x:
+    #                 break
+    #             elif hero_rect.right > wall3.rect.left and hero_rect.colliderect(wall3.rect) is True and hero_rect.x < wall3.rect.x:
+    #                 break
+    #             elif hero_rect.right > wall4.rect.left and hero_rect.colliderect(wall4.rect) is True and hero_rect.x < wall4.rect.x:
+    #                 break
+    #             elif hero_rect.right > wall5.rect.left and hero_rect.colliderect(wall5.rect) is True and hero_rect.x < wall5.rect.x:
+    #                 break
+    #             elif hero_rect.right > wall6.rect.left and hero_rect.colliderect(wall6.rect) is True and hero_rect.x < wall6.rect.x:
+    #                 break
 
-                if hero_rect.left < wall1.rect.right and hero_rect.colliderect(wall1.rect) is True and hero_rect.x > wall1.rect.x:
-                    break
-                elif hero_rect.left < wall2.rect.right and hero_rect.colliderect(wall2.rect) is True and hero_rect.x > wall2.rect.x:
-                    break
-                elif hero_rect.left < wall3.rect.right and hero_rect.colliderect(wall3.rect) is True and hero_rect.x > wall3.rect.x:
-                    break
-                elif hero_rect.left < wall4.rect.right and hero_rect.colliderect(wall4.rect) is True and hero_rect.x > wall4.rect.x: 
-                    break
-                elif hero_rect.left < wall5.rect.right and hero_rect.colliderect(wall5.rect) is True and hero_rect.x > wall5.rect.x:
-                    break
-                elif hero_rect.left < wall6.rect.right and hero_rect.colliderect(wall6.rect) is True and hero_rect.x > wall6.rect.x:
-                    break
-                if hero_rect.y <= 0:
-                    break
+    #             if hero_rect.left < wall1.rect.right and hero_rect.colliderect(wall1.rect) is True and hero_rect.x > wall1.rect.x:
+    #                 break
+    #             elif hero_rect.left < wall2.rect.right and hero_rect.colliderect(wall2.rect) is True and hero_rect.x > wall2.rect.x:
+    #                 break
+    #             elif hero_rect.left < wall3.rect.right and hero_rect.colliderect(wall3.rect) is True and hero_rect.x > wall3.rect.x:
+    #                 break
+    #             elif hero_rect.left < wall4.rect.right and hero_rect.colliderect(wall4.rect) is True and hero_rect.x > wall4.rect.x: 
+    #                 break
+    #             elif hero_rect.left < wall5.rect.right and hero_rect.colliderect(wall5.rect) is True and hero_rect.x > wall5.rect.x:
+    #                 break
+    #             elif hero_rect.left < wall6.rect.right and hero_rect.colliderect(wall6.rect) is True and hero_rect.x > wall6.rect.x:
+    #                 break
+    #             if hero_rect.y <= 0:
+    #                 break
 
 
 
