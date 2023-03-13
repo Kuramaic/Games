@@ -22,32 +22,32 @@ hero_rect.y = 768
 
 wall = pygame.image.load('wall.png')
 
-wall1 = pygame.transform.scale(wall, (wall.get_rect().width * 2, wall.get_rect().height // 4))
+wall1 = pygame.transform.scale(wall, (wall.get_rect().width * 6, wall.get_rect().height * 4))
 wall1_rect = wall1.get_rect()
 wall1_rect.x = 800
 wall1_rect.y = 750
 
-wall2 = pygame.transform.scale(wall, (wall.get_rect().width * 3, wall.get_rect().height // 4))
+wall2 = pygame.transform.scale(wall, (wall.get_rect().width * 6, wall.get_rect().height * 4))
 wall2_rect = wall2.get_rect()
 wall2_rect.x = 1300
 wall2_rect.y = 750
 
-wall3 = pygame.transform.scale(wall, (wall.get_rect().width * 2.5, wall.get_rect().height // 4))
+wall3 = pygame.transform.scale(wall, (wall.get_rect().width * 5, wall.get_rect().height * 4))
 wall3_rect = wall3.get_rect()
 wall3_rect.x = 1550
 wall3_rect.y = 350
 
-wall4 = pygame.transform.scale(wall, (wall.get_rect().width * 2, wall.get_rect().height // 4))
+wall4 = pygame.transform.scale(wall, (wall.get_rect().width * 4, wall.get_rect().height * 4))
 wall4_rect = wall4.get_rect()
 wall4_rect.x = 2200
 wall4_rect.y = 350
 
-wall5 = pygame.transform.scale(wall, (wall.get_rect().width * 2, wall.get_rect().height // 4))
+wall5 = pygame.transform.scale(wall, (wall.get_rect().width * 4, wall.get_rect().height * 4))
 wall5_rect = wall5.get_rect()
 wall5_rect.x = 2700
 wall5_rect.y = 250
 
-wall6 = pygame.transform.scale(wall, (wall.get_rect().width * 2, wall.get_rect().height // 4))
+wall6 = pygame.transform.scale(wall, (wall.get_rect().width * 4, wall.get_rect().height * 4))
 wall6_rect = wall6.get_rect()
 wall6_rect.x = 3100
 wall6_rect.y = 200
