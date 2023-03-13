@@ -1,5 +1,5 @@
 import pygame
-
+from walls import Wall
 pygame.init()
 
 W = 1000
