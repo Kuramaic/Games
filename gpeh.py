@@ -26,48 +26,14 @@ hero_rect = hero.get_rect()
 hero_rect.x = 450
 hero_rect.y = 768
 
-# wall = pygame.image.load('wall.png')
-# wall1.rect = wall1.get_rect()
-# wall1.rect.x = 800
-# wall1.rect.y = 750
+
 
 
 wall1=Wall(800, 750, 'wall.png', 6, 4)
-
-# wall2 = pygame.transform.scale(wall, (wall.get_rect().width * 6, wall.get_rect().height * 4))
-# wall2.rect = wall2.get_rect()
-# wall2.rect.x = 1300
-# wall2.rect.y = 750
-
 wall2=Wall(1300, 750, 'wall.png', 6, 4)
-
-# wall3 = pygame.transform.scale(wall, (wall.get_rect().width * 5, wall.get_rect().height * 4))
-# wall3.rect = wall3.get_rect()
-# wall3.rect.x = 1550
-# wall3.rect.y = 350
-
 wall3= Wall(1550,350,'wall.png',5,4)
-
-# wall4 = pygame.transform.scale(wall, (wall.get_rect().width * 4, wall.get_rect().height * 4))
-# wall4.rect = wall4.get_rect()
-# wall4.rect.x = 2250
-# wall4.rect.y = 350
-
 wall4=Wall(2250,350,'wall.png',4,4)
-
-
-# wall5 = pygame.transform.scale(wall, (wall.get_rect().width * 4, wall.get_rect().height * 4))
-# wall5.rect = wall5.get_rect()
-# wall5.rect.x = 2700
-# wall5.rect.y = 250
-
 wall5=Wall(2700,250,'wall.png',4,4)
-
-# wall6 = pygame.transform.scale(wall, (wall.get_rect().width * 4, wall.get_rect().height * 4))
-# wall6.rect = wall6.get_rect()
-# wall6.rect.x = 3100
-# wall6.rect.y = 200
-
 wall6=Wall(3100,200,'wall.png',4,4)
 
 ground = pygame.image.load('ground.png')
@@ -264,7 +230,8 @@ while 1:
             jump = True
     elif hero_rect.bottom == platform09_rect.top and platform09_rect.x + 80 > hero_rect.x > platform09_rect.x - 93:
             jump = True
-
+    else:
+        jump=False
        
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
@@ -584,33 +551,43 @@ while 1:
 
     if hero_rect.right > wall1.rect.left and hero_rect.colliderect(wall1.rect) is True and hero_rect.x < wall1.rect.x and hero_rect.top < wall1.rect.top and hero_rect.bottom > wall1.rect.bottom + 9:
         hero_rect.right = wall1.rect.left
+        move_jump=jump_force
     elif hero_rect.right > wall2.rect.left and hero_rect.colliderect(wall2.rect) is True and hero_rect.x < wall2.rect.x and hero_rect.top < wall2.rect.top and hero_rect.bottom > wall2.rect.bottom + 9:
         hero_rect.right = wall2.rect.left
+        move_jump=jump_force
     elif hero_rect.right > wall3.rect.left and hero_rect.colliderect(wall3.rect) is True and hero_rect.x < wall3.rect.x and hero_rect.top < wall3.rect.top and hero_rect.bottom > wall3.rect.bottom + 9:
         hero_rect.right = wall3.rect.left
+        move_jump=jump_force
     elif hero_rect.right > wall4.rect.left and hero_rect.colliderect(wall4.rect) is True and hero_rect.x < wall4.rect.x and hero_rect.top < wall4.rect.top and hero_rect.bottom > wall4.rect.bottom + 9:
         hero_rect.right = wall4.rect.left
+        move_jump=jump_force
     elif hero_rect.right > wall5.rect.left and hero_rect.colliderect(wall5.rect) is True and hero_rect.x < wall5.rect.x and hero_rect.top < wall5.rect.top and hero_rect.bottom > wall5.rect.bottom + 9:
         hero_rect.right = wall5.rect.left
+        move_jump=jump_force
     elif hero_rect.right > wall6.rect.left and hero_rect.colliderect(wall6.rect) is True and hero_rect.x < wall6.rect.x and hero_rect.top < wall6.rect.top and hero_rect.bottom > wall6.rect.bottom + 9:
         hero_rect.right = wall6.rect.left
-
+        move_jump=jump_force
     elif hero_rect.left < wall1.rect.right and hero_rect.colliderect(wall1.rect) is True and hero_rect.x > wall1.rect.x and hero_rect.top < wall1.rect.top and hero_rect.bottom > wall1.rect.bottom + 9:
         hero_rect.left = wall1.rect.right
+        move_jump=jump_force
     elif hero_rect.left < wall2.rect.right and hero_rect.colliderect(wall2.rect) is True and hero_rect.x > wall2.rect.x and hero_rect.top < wall2.rect.top and hero_rect.bottom > wall2.rect.bottom + 9:
         hero_rect.left = wall2.rect.right
+        move_jump=jump_force
     elif hero_rect.left < wall3.rect.right and hero_rect.colliderect(wall3.rect) is True and hero_rect.x > wall3.rect.x and hero_rect.top < wall3.rect.top and hero_rect.bottom > wall3.rect.bottom + 9:
         hero_rect.left = wall3.rect.right
+        move_jump=jump_force
     elif hero_rect.left < wall4.rect.right and hero_rect.colliderect(wall4.rect) is True and hero_rect.x > wall4.rect.x and hero_rect.top < wall4.rect.top and hero_rect.bottom > wall4.rect.bottom + 9:
         hero_rect.left = wall4.rect.right
+        move_jump=jump_force
     elif hero_rect.left < wall5.rect.right and hero_rect.colliderect(wall5.rect) is True and hero_rect.x > wall5.rect.x and hero_rect.top < wall5.rect.top and hero_rect.bottom > wall5.rect.bottom + 9:
         hero_rect.left = wall5.rect.right
+        move_jump=jump_force
     elif hero_rect.left < wall6.rect.right and hero_rect.colliderect(wall6.rect) is True and hero_rect.x > wall6.rect.x and hero_rect.top < wall6.rect.top and hero_rect.bottom > wall6.rect.bottom + 9:
         hero_rect.left = wall6.rect.right
-
+        move_jump=jump_force
     if hero_rect.bottom > ground_rect.top:
         hero_rect.bottom = ground_rect.top
-
+        
     if a == 15:
         a = 0
     
