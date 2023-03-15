@@ -41,7 +41,7 @@ ground = pygame.transform.scale(ground, (ground.get_rect().width * 40, ground.ge
 ground_rect = ground.get_rect()
 
 town = pygame.image.load('town.png')
-town = pygame.transform.scale(town, (town.get_rect().width * 10, town.get_rect().height * 10))
+town = pygame.transform.scale(town, (town.get_rect().width * 4.17, town.get_rect().height * 7.4))
 town_rect = town.get_rect()
 
 platform00 = pygame.image.load('platform1.png')
@@ -234,6 +234,7 @@ while 1:
         jump=False
        
     for event in pygame.event.get():
+
         if event.type == pygame.QUIT:
             exit()
         elif event.type == pygame.KEYDOWN:
